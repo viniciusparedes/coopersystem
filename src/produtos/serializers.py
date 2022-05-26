@@ -7,6 +7,7 @@ class ProdutoSerializer(CustomSerializer):
 		model = Produto
 		fields = '__all__'
 		extra_fields = ['get_situacao_display']
+		read_only_fields = ['situacao']
 
 
 class PedidoSerializer(CustomSerializer):
@@ -14,3 +15,4 @@ class PedidoSerializer(CustomSerializer):
 		model = Pedido
 		fields = '__all__'
 		extra_fields = ['get_situacao_display']
+		read_only_fields = ['situacao']
