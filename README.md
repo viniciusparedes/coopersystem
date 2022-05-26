@@ -24,7 +24,7 @@ The packages list can be seen below:
 ## Installation
 
 - Create a '.env' file inside 'src/coopersystem/' folder and put your enviroment params, as seen bellow:
-  
+
 
     SECRET_KEY=<your_secret_key>
     DATABASE_NAME=<your_db_name>
@@ -32,5 +32,6 @@ The packages list can be seen below:
     DATABASE_PASS=<your_db_pass>
     DATABASE_HOST=db
     DATABASE_PORT=5432
+
 
 - Run the 'run.sh' file to up the docker containers and init the application.
