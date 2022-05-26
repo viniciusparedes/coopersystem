@@ -14,6 +14,7 @@ psycopg2 = "^2.9.3"
 django-environ = "^0.8.1"
 
 [tool.poetry.dev-dependencies]
+flake8 = "^4.0.1"
 
 [build-system]
 requires = ["poetry>=0.12"]
