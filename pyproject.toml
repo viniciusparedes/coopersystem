@@ -7,6 +7,9 @@ authors = ["Marcus Paredes <viniciusparedes@gmail.com>"]
 [tool.poetry.dependencies]
 python = "3.8.3"
 django = "3.2"
+djangorestframework = "^3.13.1"
+django-filter = "^21.1"
+djangorestframework-simplejwt = "^5.2.0"
 
 [tool.poetry.dev-dependencies]
 
