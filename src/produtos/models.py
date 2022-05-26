@@ -15,10 +15,18 @@ class Produto(models.Model):
         except Exception as _:
             return 0
 
+    def update_situacao(self):
+        self.situacao = 0 if self.quantidade < 1 else 1
+
+    def update_stock(self, amount):
+        self.quantidade -= amount
+        self.update_situacao()
+        super(Produto, self).save()
+
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         self.quantidade += self.get_previous_balance()
-        self.situacao = 0 if self.quantidade < 1 else 1
-        super(self).save(force_insert, force_update, using, update_fields)
+        self.update_situacao()
+        super(Produto, self).save(force_insert, force_update, using, update_fields)
 
 
 class Pedido(models.Model):
@@ -38,4 +46,5 @@ class Pedido(models.Model):
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         if not self.has_stock:
             raise Exception("Este produto não possui o estoque necessário para atender ao pedido.")
-        super(self).save(force_insert, force_update, using, update_fields)
+        super(Pedido, self).save(force_insert, force_update, using, update_fields)
+        self.produto.update_stock(self.quantidade)
