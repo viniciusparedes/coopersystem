@@ -1,5 +1,5 @@
 from django.db import models
-from const import SITUACOES
+from .const import SITUACOES
 
 
 class Produto(models.Model):
