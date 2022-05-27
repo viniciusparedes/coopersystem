@@ -2,10 +2,8 @@
 
 This project develop a Product and Order management flow
 
-
-#### Django
-
 This project uses poetry to manage its 3rd party packages. 
+
 The packages list can be seen below:
   
     [packages]
@@ -20,7 +18,18 @@ The packages list can be seen below:
     
     [dev-packages]
     flake8 = "^4.0.1"
-    
+
+
+## Makefile
+
+Some application handling actions are available in a Makefile, explained below:
+
+- **make run** - Run the application;
+- **make stop** - Stop the application;
+- **make logs** - View the application logs;
+- **make build** - Creates the environment to run the application;
+- **make beautify** - Clean the code application;
+- **make test** - Run the application and execute tests.
  
 ## Installation
 
@@ -35,16 +44,21 @@ The packages list can be seen below:
     DATABASE_PORT=5432
     ```
 
+- Execute the **make build** command to create the application enviroment;
 
-- Run the 'run.sh' file to up the docker containers and init the application.
+The **make build** command is only needed on the first run of the application, on later runs run the **make run** to start the application.
 
 PS.: This project needs [docker-compose](https://docs.docker.com/compose/install/) to run.
 
 ## Tests
 
-- To run the tests, after starting the docker containers, run the command below and wait for the result.
+- To execute the tests, after starting the docker containers, run the command below and wait for the result.
 
     ```
-    docker exec -it coopersystem_web_1 ./manage.py createsuperuser
+    make test
     ```
+  
+## Docs (Swagger)
+
+- With the application started, access the address http://localhost:8000/
 
