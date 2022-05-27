@@ -1,7 +1,15 @@
 from rest_framework import (viewsets, permissions)
+from rest_framework.schemas import get_schema_view
+from rest_framework_swagger.renderers import (SwaggerUIRenderer, OpenAPIRenderer)
 
 from coopersystem.filters import (PedidoFilter, ProdutoFilter)
 from .serializers import *
+
+
+schema_view = get_schema_view(
+	title='CooperSystem Produtos & Pedidos Manager',
+	renderer_classes=[OpenAPIRenderer, SwaggerUIRenderer]
+)
 
 
 class ProdutoViewSet(viewsets.ModelViewSet):
