@@ -8,23 +8,14 @@ class Produto(models.Model):
     quantidade = models.IntegerField()
     situacao = models.SmallIntegerField(choices=SITUACOES_PRODUTO)
 
-    def get_previous_balance(self):
-        try:
-            produto = Produto.objects.get(pk=self.pk)
-            return produto.quantidade
-        except Exception as _:
-            return 0
-
     def update_situacao(self):
         self.situacao = 0 if self.quantidade < 1 else 1
 
     def update_stock(self, amount):
         self.quantidade -= amount
-        self.update_situacao()
-        super(Produto, self).save()
+        self.save()
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
-        self.quantidade += self.get_previous_balance()
         self.update_situacao()
         super(Produto, self).save(force_insert, force_update, using, update_fields)
 
@@ -37,7 +28,7 @@ class Pedido(models.Model):
     solicitante = models.CharField(max_length=124, null=False, blank=False)
     solicitante_endereco = models.CharField(max_length=360)
     despachante = models.CharField(max_length=124, null=False, blank=False)
-    situacao = models.SmallIntegerField(choices=SITUACOES_PEDIDO)
+    situacao = models.SmallIntegerField(choices=SITUACOES_PEDIDO, default=0)
 
     @property
     def has_stock(self):
