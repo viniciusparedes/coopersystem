@@ -5,7 +5,6 @@ from rest_framework_swagger.renderers import (SwaggerUIRenderer, OpenAPIRenderer
 from produtos.filters import (PedidoFilter, ProdutoFilter)
 from .serializers import *
 
-
 schema_view = get_schema_view(
 	title='CooperSystem Produtos & Pedidos Manager',
 	renderer_classes=[OpenAPIRenderer, SwaggerUIRenderer]
@@ -13,6 +12,20 @@ schema_view = get_schema_view(
 
 
 class ProdutoViewSet(viewsets.ModelViewSet):
+	"""
+	retrieve:
+		Consulta uma instância de um Produto.
+	list:
+		Exibe todos os produtos.
+	create:
+		Cadastra um Produto.
+	delete:
+		Remove um produto existente.
+	partial_update:
+		Atualiza um ou mais atributos de um Produto.
+	update:
+		Atualiza um Produto.
+	"""
 	queryset = Produto.objects.all()
 	permission_classes = [permissions.IsAuthenticated]
 	serializer_class = ProdutoSerializer
@@ -20,6 +33,20 @@ class ProdutoViewSet(viewsets.ModelViewSet):
 
 
 class PedidoViewSet(viewsets.ModelViewSet):
+	"""
+		retrieve:
+			Consulta uma instância de um Pedido.
+		list:
+			Exibe todos os pedidos.
+		create:
+			Cria um Pedido.
+		delete:
+			Remove um Pedido.
+		partial_update:
+			Atualiza um ou mais atributos de um Pedido.
+		update:
+			Atualiza um Pedido.
+		"""
 	queryset = Pedido.objects.all()
 	permission_classes = [permissions.IsAuthenticated]
 	serializer_class = PedidoSerializer
