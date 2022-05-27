@@ -2,7 +2,7 @@ from rest_framework import (viewsets, permissions)
 from rest_framework.schemas import get_schema_view
 from rest_framework_swagger.renderers import (SwaggerUIRenderer, OpenAPIRenderer)
 
-from coopersystem.filters import (PedidoFilter, ProdutoFilter)
+from produtos.filters import (PedidoFilter, ProdutoFilter)
 from .serializers import *
 
 
