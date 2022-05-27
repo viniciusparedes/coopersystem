@@ -1,7 +1,6 @@
 import django_filters
-from django.db import models
 
-from produtos.const import SITUACOES_PRODUTO
+from produtos.const import (SITUACOES_PRODUTO, SITUACOES_PEDIDO)
 from produtos.models import (Produto, Pedido)
 
 
@@ -20,7 +19,7 @@ class ProdutoFilter(django_filters.FilterSet):
 
 class PedidoFilter(django_filters.FilterSet):
 	produto = django_filters.CharFilter(field_name='produto__nome', lookup_expr='icontains')
-	situacao = django_filters.CharFilter(field_name='get_situacao_display', lookup_expr='icontains')
+	situacao = django_filters.ChoiceFilter(choices=SITUACOES_PEDIDO)
 
 	class Meta:
 		model = Pedido
