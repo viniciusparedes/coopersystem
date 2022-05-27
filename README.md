@@ -26,13 +26,14 @@ The packages list can be seen below:
 
 - Create a '.env' file inside 'src/coopersystem/' folder and put your enviroment params, as seen bellow:
 
-
+    ```
     SECRET_KEY=<your_secret_key>
     DATABASE_NAME=<your_db_name>
     DATABASE_USER=<your_db_user>
     DATABASE_PASS=<your_db_pass>
     DATABASE_HOST=db
     DATABASE_PORT=5432
+    ```
 
 
 - Run the 'run.sh' file to up the docker containers and init the application.
@@ -43,6 +44,7 @@ PS.: This project needs [docker-compose](https://docs.docker.com/compose/install
 
 - To run the tests, after starting the docker containers, run the command below and wait for the result.
 
-
+    ```
     docker exec -it coopersystem_web_1 ./manage.py createsuperuser
+    ```
 
