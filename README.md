@@ -16,6 +16,7 @@ The packages list can be seen below:
     djangorestframework-simplejwt = "^5.2.0"
     psycopg2 = "^2.9.3"
     django-environ = "^0.8.1"
+    django-rest-swagger = "^2.2.0"
     
     [dev-packages]
     flake8 = "^4.0.1"
@@ -35,3 +36,13 @@ The packages list can be seen below:
 
 
 - Run the 'run.sh' file to up the docker containers and init the application.
+
+PS.: This project needs [docker-compose](https://docs.docker.com/compose/install/) to run.
+
+## Tests
+
+- To run the tests, after starting the docker containers, run the command below and wait for the result.
+
+
+    docker exec -it coopersystem_web_1 ./manage.py createsuperuser
+
